@@ -1,0 +1,13 @@
+.home-tabs {
+  width: 80%;
+}
+.mat-tab {
+  height: 400px;
+  background-color: cadetblue;
+}
+.home {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}

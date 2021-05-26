@@ -1,0 +1,14 @@
+.home-tabs {
+  width: 80%;
+}
+.mat-tab {
+  height: 400px;
+  background-color: cadetblue;
+}
+.container {
+  margin: 0 auto;
+  height: 700px;
+  width: 80%;
+  text-align: center;
+}
+

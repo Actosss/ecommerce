@@ -1,1 +1,20 @@
-<p>login works!</p>
+<div class="container">
+  <!-- Login Form -->
+    <mat-tab-group>
+    <mat-tab label="Login">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+ <div class="example-container">
+   <mat-form-field>
+     <input matInput placeholder="Username" placeholder="Username" formControlName="username">
+   </mat-form-field>
+   <mat-form-field>
+     <input matInput type="Password" placeholder="Password" formControlName="password">
+   </mat-form-field>
+   <button type="submit" [disabled]="!loginForm.valid" mat-raised-button color="primary" mat-button>Sign In</button>
+ </div>
+</form>
+</mat-tab>
+</mat-tab-group>
+
+</div>
+<app-tabs></app-tabs>

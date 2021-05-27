@@ -17,7 +17,10 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
 import { CoreModule } from './core/core.module';
 import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './pages/profile/profile.component';
+import {MatIconModule} from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     TabsComponent,
     CarouselComponent,
     CartComponent,
-    PaginationComponent
+    PaginationComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,10 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FlexLayoutModule,
     CoreModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatIconModule,
+    FontAwesomeModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

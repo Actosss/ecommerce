@@ -10,14 +10,12 @@ import { CoreModule } from './core/core.module';
 import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,9 +28,9 @@ import { PagesModule } from './pages/pages.module';
     MatIconModule,
     FontAwesomeModule,
     SharedModule,
-    PagesModule
+    PagesModule,
   ],
   providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

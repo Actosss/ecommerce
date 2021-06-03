@@ -9,10 +9,25 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
 import { AppRoutingModule } from '../app-routing.module';
 
-
 @NgModule({
-  declarations: [CartComponent,TabsComponent,PaginationComponent,CarouselComponent],
-  imports: [CommonModule,MaterialModule,HttpClientModule,ReactiveFormsModule,AppRoutingModule],
-  exports:[CartComponent,TabsComponent,PaginationComponent,CarouselComponent]
+  declarations: [
+    CartComponent,
+    TabsComponent,
+    PaginationComponent,
+    CarouselComponent,
+  ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+  ],
+  exports: [
+    CartComponent,
+    TabsComponent,
+    PaginationComponent,
+    CarouselComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

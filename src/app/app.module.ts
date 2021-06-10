@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
+import { AuthGuard } from './core/guard/auth.guard';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -35,7 +36,7 @@ import { environment } from 'src/environments/environment';
     developmentMode: !environment.production
     })
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

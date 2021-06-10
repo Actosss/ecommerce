@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { SearchComponent } from './search/search.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SearchComponent } from './search/search.component';
     TabsComponent,
     PaginationComponent,
     CarouselComponent,
-    SearchComponent
+    SearchComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { SearchComponent } from './search/search.component';
     TabsComponent,
     PaginationComponent,
     CarouselComponent,
-    SearchComponent
+    SearchComponent,
+    ProductsComponent
   ],
 })
 export class SharedModule {}

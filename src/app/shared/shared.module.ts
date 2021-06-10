@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AppRoutingModule } from '../app-routing.module';
     TabsComponent,
     PaginationComponent,
     CarouselComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { AppRoutingModule } from '../app-routing.module';
     TabsComponent,
     PaginationComponent,
     CarouselComponent,
+    SearchComponent
   ],
 })
 export class SharedModule {}

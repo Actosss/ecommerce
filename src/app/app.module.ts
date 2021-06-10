@@ -14,6 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -29,6 +31,9 @@ import { PagesModule } from './pages/pages.module';
     FontAwesomeModule,
     SharedModule,
     PagesModule,
+    NgxsModule.forRoot([], {
+    developmentMode: !environment.production
+    })
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

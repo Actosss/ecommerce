@@ -1,7 +1,5 @@
-import { ChangeDetectorRef } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Product } from 'src/app/core/interfaces/products';
 import { ProductService } from './product.service';
@@ -13,9 +11,9 @@ import { ProductService } from './product.service';
 })
 export class ProductsComponent implements OnInit {
 
-  @ViewChild(MatPaginator, { static: false })
-  paginator!: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   product!:Product[];
+  dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>();
 
   constructor(private productService: ProductService){
   }
@@ -33,7 +31,7 @@ export class ProductsComponent implements OnInit {
       this.dataSource.disconnect();
     }
   }
-  dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>();
+
 
   handleSuccessfulResponse(response: Product[]) {
     this.product = response;

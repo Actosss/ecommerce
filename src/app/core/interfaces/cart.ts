@@ -4,6 +4,6 @@ import { User } from "./user";
 export class Cart {
   id!:number;
   grandTotal!:number;
-  cartItem!:CartItem;
+  cartItem!:CartItem[];
   user!:User;
 }

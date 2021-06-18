@@ -1,0 +1,32 @@
+<div class="container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> quantity </th>
+      <td mat-cell *matCellDef="let cartItem"> {{cartItem.quantity}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef> product </th>
+      <td mat-cell *matCellDef="let cartItem"> {{cartItem.product.name}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> price </th>
+      <td mat-cell *matCellDef="let cartItem"> {{cartItem.product.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell   *matHeaderCellDef ></th>
+      <td  mat-cell *matCellDef="let cartItem" ><button class="dlt-btn" (click)="deleteItem(cartItem)"><span class="material-icons delete">delete</span></button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+
+

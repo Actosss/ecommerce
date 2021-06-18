@@ -13,6 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
+
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
@@ -29,5 +30,11 @@ export class LoginService {
   }
   getUserBoard(): Observable<any> {
     return this.http.get(USER_API + 'getCartByUserId', { responseType: 'text' });
+  }
+  getRole(id: any) {
+    throw new Error('Method not implemented.');
+  }
+  logout() {
+    throw new Error('Method not implemented.');
   }
 }

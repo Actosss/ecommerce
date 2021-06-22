@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CartItem } from 'src/app/core/interfaces/cartItem';
 import { Cart } from 'src/app/core/interfaces/cart';
 import { MatPaginator } from '@angular/material/paginator';
+import { Store } from '@ngxs/store';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -19,8 +21,10 @@ export class CartComponent implements OnInit {
 
   public dataSource: MatTableDataSource<CartItem> = new MatTableDataSource<CartItem>();
 
-  constructor( private cartService:CartService,private tokenStorageService :TokenStorageService) {
+  constructor( private cartService:CartService,private tokenStorageService :TokenStorageService,private store:Store) {
   }
+  token:string | undefined;
+
   ngOnInit(): void {
     this.saveCartData();
     this.loadData();

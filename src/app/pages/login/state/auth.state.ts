@@ -1,20 +1,29 @@
 
 import {Action, Selector, State, StateContext} from '@ngxs/store';
-import { AuthStateModel, Login, Logout} from './auth.action';
+import { Login, Logout} from './auth.action';
 import { LoginService } from '../login.service';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { TokenStorageService } from 'src/app/core/tokenStorage/tokenStorageService';
 import { Roles } from 'src/app/core/interfaces/role';
+import { User } from 'src/app/core/interfaces/user';
 
+
+export class AuthStateModel {
+  accessToken: string | undefined;
+      loggedInUser: User|undefined;
+      username: string | undefined;
+      email:string|undefined;
+      roles:string |undefined;
+
+}
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {
-    loggedInUser:null,
-    accessToken: null,
-    username: null,
-    email:null,
-    roles:null
+    loggedInUser:undefined,
+    accessToken: undefined,
+    username: undefined,
+    email:undefined,
+    roles:undefined
 
   }
 })
@@ -34,20 +43,21 @@ export class AuthState {
   static role(state: AuthStateModel) {
     return state.roles;
   }
+  @Selector()
+  static getToken(state: AuthStateModel) {
+    return state.accessToken;
+  }
 
   @Selector()
   static loggedInUserName(state: AuthStateModel) {
     return state.username;
   }
-  constructor(private loginService: LoginService, private tokenStorage: TokenStorageService) {}
+  constructor(private loginService: LoginService) {}
 
   @Action(Login)
   login(ctx: StateContext<AuthStateModel>, action: Login) {
     return this.loginService.login(action.payload.username, action.payload.password).pipe(
       tap((result: { accessToken: string, username:string,email:string,roles:Roles,loggedInUser:string,id:number, password:string, name:string, token:string}) => {
-        console.log(result);
-        this.tokenStorage.saveUser(result);
-        this.tokenStorage.saveToken(result.accessToken)
       ctx.patchState({
         loggedInUser:result,
         accessToken: result.accessToken,
@@ -60,20 +70,19 @@ export class AuthState {
   }
 
 @Action(Logout)
-logout({getState, setState,dispatch}: StateContext<AuthStateModel>) {
-  return this.loginService.logout()
-    .pipe(tap((result) => {
-        const state = getState();
-        setState({...state,
-          loggedInUser:null,
-          accessToken: null,
-          username: null,
-          email:null,
-          roles:null,
+logout(ctx: StateContext<AuthStateModel>) {
+ this.loginService.logout()
+    const state = ctx.getState();
+      ctx.setState({...state,
+          loggedInUser:undefined,
+          accessToken: undefined,
+          username: undefined,
+          email:undefined,
+          roles:undefined,
         });
-      })
-    );
-}
+        return state;
+ };
+
 }
 
 

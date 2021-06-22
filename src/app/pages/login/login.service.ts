@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { TokenStorageService } from 'src/app/core/tokenStorage/tokenStorageService';
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
@@ -36,7 +36,7 @@ export class LoginService {
   getRole(id: any) {
     throw new Error('Method not implemented.');
   }
-  logout():any{
+  public logout():void{
    return this.tokenStorage.signOut();
   }
 

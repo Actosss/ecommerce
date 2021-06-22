@@ -12,8 +12,8 @@ const CART_ID ='cart-id'
 export class TokenStorageService {
   constructor() { }
 
-  public signOut():void {
-   return window.sessionStorage.clear(),window.localStorage.clear();
+  public signOut():void{
+   window.sessionStorage.clear();
   }
 
   public saveToken(token: string): void {

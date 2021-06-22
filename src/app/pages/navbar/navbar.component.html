@@ -6,14 +6,14 @@
       </div>
       <span class="menu-spacer"></span>
       <a href="#" routerLink="profile" routerLinkActive="active" mat-button><mat-icon matBadge="1" matBadgeColor="warn">home</mat-icon></a>
-      <a href="#" routerLink="register" routerLinkActive="active" mat-button>Register</a>
       <a href="#" routerLink="cart" routerLinkActive="active" mat-button>Cart</a>
-      <button *ngIf="!(loggedInUser$ | async)" routerLink="login" mat-flat-button color="primary" aria-label="Sign-in">
+      <a href="#" *ngIf="!(loggedInUser$ | async)" routerLink="register" routerLinkActive="active" mat-button>Register</a>
+      <a *ngIf="!(loggedInUser$ | async)" routerLink="login" mat-flat-button color="primary" aria-label="Sign-in">
         <mat-icon>lock</mat-icon> Login
-      </button>
-      <button *ngIf="(loggedInUser$ | async)" (click)="logout()"  routerLink="/home"mat-flat-button color="accent" aria-label="Sign-out">
+      </a>
+      <a *ngIf="(loggedInUser$ | async)" (click)="logout()"  routerLink="/home" mat-flat-button color="accent" aria-label="Sign-out">
         <mat-icon>lock_open</mat-icon> Logout
-      </button>
+      </a>
     </mat-toolbar-row>
   </mat-toolbar>
 

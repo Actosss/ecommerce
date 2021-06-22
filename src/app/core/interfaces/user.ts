@@ -1,4 +1,4 @@
-import { Role } from "./role";
+import { Roles } from "./role";
 
 export class User {
   id!: number;
@@ -6,6 +6,6 @@ export class User {
   password: string = "";
   email:string = "";
   name: string = "";
-  role!: Role;
+  roles!: Roles;
   token: string = "";
 }

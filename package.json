@@ -24,6 +24,7 @@
     "@fortawesome/angular-fontawesome": "^0.8.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@ngxs/logger-plugin": "^3.6.2-dev.master-eaa5d86",
+    "@ngxs/storage-plugin": "^3.7.2",
     "@ngxs/store": "^3.6.2-dev.master-eaa5d86",
     "material-icons": "^0.7.1",
     "rxjs": "~6.6.0",

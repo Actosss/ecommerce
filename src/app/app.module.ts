@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 import { AuthGuard } from './core/guard/auth.guard';
 import { AuthState } from './pages/login/state/auth.state';
 import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -37,6 +38,7 @@ import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
     NgxsModule.forRoot([AuthState], {
     developmentMode: !environment.production}),
     NgxsLoggerPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot({key: 'auth'})
 
   ],
   providers: [authInterceptorProviders,AuthGuard],

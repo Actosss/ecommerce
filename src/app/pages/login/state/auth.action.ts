@@ -1,9 +1,11 @@
+import { User } from "src/app/core/interfaces/user";
 
 export class AuthStateModel {
   accessToken!: string | null;
+      loggedInUser!: User|null;
       username!: string | null;
       email!:string|null;
-      role!:string |null;
+      roles!:string |null;
 
 }
 export class Login {

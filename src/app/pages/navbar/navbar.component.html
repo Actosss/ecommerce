@@ -8,9 +8,12 @@
       <a href="#" routerLink="profile" routerLinkActive="active" mat-button><mat-icon matBadge="1" matBadgeColor="warn">home</mat-icon></a>
       <a href="#" routerLink="register" routerLinkActive="active" mat-button>Register</a>
       <a href="#" routerLink="cart" routerLinkActive="active" mat-button>Cart</a>
-      <a href="#" routerLink="login" routerLinkActive="active" mat-button>Login</a>
-
-
+      <button *ngIf="!(loggedInUser$ | async)" routerLink="login" mat-flat-button color="primary" aria-label="Sign-in">
+        <mat-icon>lock</mat-icon> Login
+      </button>
+      <button *ngIf="(loggedInUser$ | async)" (click)="logout()"  routerLink="/home"mat-flat-button color="accent" aria-label="Sign-out">
+        <mat-icon>lock_open</mat-icon> Logout
+      </button>
     </mat-toolbar-row>
   </mat-toolbar>
 

@@ -38,7 +38,7 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
     NgxsModule.forRoot([AuthState], {
     developmentMode: !environment.production}),
     NgxsLoggerPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot({key: 'auth'})
+    NgxsStoragePluginModule.forRoot({key: AuthState})
 
   ],
   providers: [authInterceptorProviders,AuthGuard],

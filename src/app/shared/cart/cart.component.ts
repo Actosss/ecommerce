@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from './cart.service';
-import { TokenStorageService } from 'src/app/core/tokenStorage/tokenStorageService';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartItem } from 'src/app/core/interfaces/cartItem';
 import { Cart } from 'src/app/core/interfaces/cart';
 import { MatPaginator } from '@angular/material/paginator';
-import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-cart',
@@ -15,31 +13,29 @@ import { Store } from '@ngxs/store';
 export class CartComponent implements OnInit {
   cart:Cart[] =[]
   cartItems:CartItem[] =[];
-  cartItemsData: CartItem[] =[];
   displayedColumns: string[] = ['quantity', 'product', 'price','actions'];
+
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
 
   public dataSource: MatTableDataSource<CartItem> = new MatTableDataSource<CartItem>();
 
-  constructor( private cartService:CartService,private tokenStorageService :TokenStorageService,private store:Store) {
+  constructor( private cartService:CartService) {
   }
-  token:string | undefined;
-
   ngOnInit(): void {
-    this.saveCartData();
-    this.loadData();
+
   }
-  loadData() {
-    this.cartService.getCartItemsByCartId(sessionStorage.getItem('cart-id')).subscribe((cartItemsData)=>{
-      this.cartItems = cartItemsData;
+
+  loadData()  {
+    this.cartService.getCartItemsByCartId(localStorage.getItem('cart-id')).subscribe((data)=>{
+      this.cartItems = data;
       this.dataSource.paginator = this.paginator;
-      this.dataSource = new MatTableDataSource<CartItem>(this.cartItems);
+      this.dataSource = new MatTableDataSource<CartItem>(this.cartItems)
     })
   }
   saveCartData(){
-    this.cartService.getCart(sessionStorage.getItem('user-id')).subscribe((cartData) => {
+    this.cartService.getCart(localStorage.getItem('cart-id')).subscribe((cartData) => {
       this.cart = cartData;
-      this.tokenStorageService.saveCart(cartData)
+      console.log(cartData)
     });
   }
   deleteItem(cartItem: any){

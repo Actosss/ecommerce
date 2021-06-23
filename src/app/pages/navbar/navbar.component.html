@@ -6,8 +6,7 @@
       <a href="#" *ngIf="(loggedInUser$ | async)" routerLink="cart" routerLinkActive="active" mat-button>Cart</a>
       <a href="#" *ngIf="!(loggedInUser$ | async)" routerLink="register" routerLinkActive="active" mat-button>Register</a>
       <a *ngIf="!(loggedInUser$ | async)" routerLink="login" mat-flat-button color="primary" aria-label="Sign-in"><mat-icon>lock</mat-icon> Login</a>
-      <a *ngIf="(loggedInUser$ | async)" (click)="logout()"  routerLink="/home" mat-flat-button color="accent" aria-label="Sign-out"><mat-icon>lock_open</mat-icon> Logout</a>
+      <a *ngIf="(loggedInUser$ | async)" (click)="logout()"  routerLink="/home" mat-flat-button color="primary" aria-label="Sign-out"><mat-icon>lock_open</mat-icon> Logout</a>
     </mat-toolbar-row>
   </mat-toolbar>
-
 </div>

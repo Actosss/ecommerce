@@ -1,5 +1,5 @@
 
-import {Action, Selector, State, StateContext} from '@ngxs/store';
+import { Action, Selector, State, StateContext} from '@ngxs/store';
 import { Login, Logout} from './auth.action';
 import { LoginService } from '../login.service';
 import { tap } from 'rxjs/operators';
@@ -14,6 +14,7 @@ export class AuthStateModel {
       username: string | undefined;
       email:string|undefined;
       roles:string |undefined;
+      id: number |undefined;
 
 }
 @State<AuthStateModel>({
@@ -23,13 +24,14 @@ export class AuthStateModel {
     accessToken: undefined,
     username: undefined,
     email:undefined,
-    roles:undefined
+    roles:undefined,
+    id: undefined
 
   }
 })
 @Injectable()
 export class AuthState {
-  result: any;
+  result: null;
 
   @Selector()
   static isAuthenticated(state: AuthStateModel): boolean {
@@ -47,21 +49,21 @@ export class AuthState {
   static getToken(state: AuthStateModel) {
     return state.accessToken;
   }
-
   @Selector()
   static loggedInUserName(state: AuthStateModel) {
     return state.username;
+  }
+  @Selector()
+  static userId(state: AuthStateModel) {
+    return state.id;
   }
   constructor(private loginService: LoginService) {}
 
   @Action(Login)
   login(ctx: StateContext<AuthStateModel>, action: Login) {
-
     return this.loginService.login(action.payload.username, action.payload.password).pipe(
       tap((result: { accessToken: string, username:string,email:string,roles:Roles,loggedInUser:string,id:number, password:string, name:string, token:string}) => {
-      ctx.patchState({
-        loggedInUser:result,
-      });
+      ctx.patchState({loggedInUser:result});
       window.localStorage.setItem('token',result.accessToken)
       window.localStorage.setItem('username',result.username)
       window.localStorage.setItem('email',result.email)

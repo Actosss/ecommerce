@@ -2,11 +2,26 @@
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       <span class="menu-spacer"></span>
-      <a href="#" routerLink="home" routerLinkActive="active" mat-button><mat-icon matBadge="" matBadgeColor="warn">home</mat-icon></a>
-      <a href="#" *ngIf="(loggedInUser$ | async)" routerLink="cart" routerLinkActive="active" mat-button>Cart</a>
-      <a href="#" *ngIf="!(loggedInUser$ | async)" routerLink="register" routerLinkActive="active" mat-button>Register</a>
-      <a *ngIf="!(loggedInUser$ | async)" routerLink="login" mat-flat-button color="primary" aria-label="Sign-in"><mat-icon>lock</mat-icon> Login</a>
-      <a *ngIf="(loggedInUser$ | async)" (click)="logout()"  routerLink="/home" mat-flat-button color="primary" aria-label="Sign-out"><mat-icon>lock_open</mat-icon> Logout</a>
+      <button routerLink="home" routerLinkActive="active" mat-button><mat-icon matBadge="" matBadgeColor="warn">home</mat-icon></button>
+      <button  *ngIf="!(loggedInUser$ | async)" routerLink="register" routerLinkActive="active" mat-button>Register</button>
+      <button  *ngIf="(loggedInUser$ | async)" mat-button [matMenuTriggerFor]="menuHero" ng-init><mat-icon class="material-icons-outlined">manage_accounts</mat-icon></button>
+      <mat-menu #menuHero="matMenu" class="uxg-user-profile menu-tab">
+          <div class="uxg-menu-header menu-tab-header">
+              <div class="uxg-avatar-hero-block">
+                  <div class="uxg-avatar" large>RH</div>
+                  <h6 class="uxg-h6">Raya Hristova</h6>
+                  <span class="uxg-caption">raya.hristova@finastra.com</span>
+              </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="uxg-menu-footer menu-tab-footer">
+              <button mat-flat-button color="primary"  (click)="logout()" dense>
+              <mat-icon>exit_to_app</mat-icon>Logout</button>
+              <button mat-button color="primary" routerLink="profile" dense>View profile</button>
+          </div>
+      </mat-menu>
+      <button *ngIf="!(loggedInUser$ | async)" routerLink="login" mat-flat-button color="primary" aria-label="Sign-in"><mat-icon>lock</mat-icon> Login</button>
+      <button *ngIf="(loggedInUser$ | async)" routerLink="/home" (click)="logout()"   mat-flat-button color="primary" aria-label="Sign-out"><mat-icon>lock_open</mat-icon> Logout</button>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

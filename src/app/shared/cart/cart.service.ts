@@ -11,15 +11,16 @@ import { CartItem } from 'src/app/core/interfaces/cartItem';
 export class CartService {
 
 
-  private getCartByUserId = 'http://localhost:8080/api/user/cart/';
-  private allCartItemsByCartId = 'http://localhost:8080/api/user/allCartItemsByCartId/';
+
+  private getCartByUSerId = 'http://localhost:8080/api/user/getCartByUserId/';
+  private getCartItemsByCartId = 'http://localhost:8080/api/user/allCartItemsByCartId/';
 
   constructor(private httpClient :HttpClient) { }
 
-  getCart(id:string|null): Observable<Cart[]> {
-    return this.httpClient.get<Cart[]>(this.getCartByUserId + id);
+  getCartByUserId(id:number): Observable<Cart>{
+    return this.httpClient.get<Cart>(this.getCartByUSerId + id);
   }
-  getCartItemsByCartId(id:string|null): Observable<CartItem[]>{
-    return this.httpClient.get<CartItem[]>(this.allCartItemsByCartId + id);
+  getCartItemByCartId(id: number):Observable<CartItem> {
+    return this.httpClient.get<CartItem>(this.getCartItemsByCartId + id);
   }
 }

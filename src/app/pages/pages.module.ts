@@ -13,8 +13,27 @@ import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
-  declarations: [HomeComponent,LoginComponent,NavbarComponent,ProfileComponent,RegisterComponent],
-  imports: [CommonModule,MaterialModule,HttpClientModule,ReactiveFormsModule,SharedModule,AppRoutingModule],
-  exports:[HomeComponent,LoginComponent,NavbarComponent,ProfileComponent,RegisterComponent]
+  declarations: [
+    HomeComponent,
+    LoginComponent,
+    NavbarComponent,
+    ProfileComponent,
+    RegisterComponent
+  ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    SharedModule
+  ],
+  exports:[
+    HomeComponent,
+    LoginComponent,
+    NavbarComponent,
+    ProfileComponent,
+    RegisterComponent
+  ]
 })
 export class PagesModule { }

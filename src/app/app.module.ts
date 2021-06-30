@@ -20,9 +20,13 @@ import { AuthGuard } from './core/guard/auth.guard';
 import { AuthState } from './pages/login/state/auth.state';
 import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { ProfileState } from './pages/profile/state/profile.state';
+import { CommonModule } from "@angular/common";
+import { CartState } from './shared/cart/state/cart.state';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -35,10 +39,10 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
     FontAwesomeModule,
     SharedModule,
     PagesModule,
-    NgxsModule.forRoot([AuthState], {
+    NgxsModule.forRoot([AuthState,ProfileState,CartState], {
     developmentMode: !environment.production}),
     NgxsLoggerPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot({key: AuthState})
+    NgxsStoragePluginModule.forRoot({key: [AuthState,ProfileState]})
 
   ],
   providers: [authInterceptorProviders,AuthGuard],

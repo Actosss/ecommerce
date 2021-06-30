@@ -1,3 +1,15 @@
 .menu-spacer {
   flex: 1 1 auto;
 }
+mat-icon {
+  color: #fff;
+}
+.menu-tab {
+margin: 25px;
+}
+.menu-tab-footer {
+  margin: 15px;
+}
+.menu-tab-header {
+  margin: 15px;
+}

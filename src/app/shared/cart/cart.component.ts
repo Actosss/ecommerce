@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CartService } from './cart.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { CartItem } from 'src/app/core/interfaces/cartItem';
+import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/core/interfaces/cart';
-import { MatPaginator } from '@angular/material/paginator';
+import { CartState} from './state/cart.state';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { UserProfile } from 'src/app/core/interfaces/userProfile';
+import { ProfileState } from 'src/app/pages/profile/state/profile.state';
+import { GetCart, } from './state/cart.action';
+
 
 @Component({
   selector: 'app-cart',
@@ -11,34 +14,28 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cart:Cart[] =[]
-  cartItems:CartItem[] =[];
-  displayedColumns: string[] = ['quantity', 'product', 'price','actions'];
+  userId! :number;
+  cartId! :number;
+  cart! :any
 
-  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
 
-  public dataSource: MatTableDataSource<CartItem> = new MatTableDataSource<CartItem>();
+  @Select(ProfileState.userProfile) userProfile$!: Observable<UserProfile>;
 
-  constructor( private cartService:CartService) {
-  }
+  @Select(CartState.cart)cart$!: Observable<Cart>;
+
+  constructor(private store:Store) {}
+
   ngOnInit(): void {
+    this.userProfile$.subscribe(userProfileData => {
+      this.userId = userProfileData.id
 
-  }
+      this.store.dispatch(new GetCart(this.userId));
+    });
 
-  loadData()  {
-    this.cartService.getCartItemsByCartId(localStorage.getItem('cart-id')).subscribe((data)=>{
-      this.cartItems = data;
-      this.dataSource.paginator = this.paginator;
-      this.dataSource = new MatTableDataSource<CartItem>(this.cartItems)
-    })
-  }
-  saveCartData(){
-    this.cartService.getCart(localStorage.getItem('cart-id')).subscribe((cartData) => {
-      this.cart = cartData;
-      console.log(cartData)
+    this.cart$.subscribe(data => {
+      this.cart = data;
+      // here you will be able to retrieve your cartItems from the cart object
     });
   }
-  deleteItem(cartItem: any){
-    console.log(cartItem)
-  }
 }
+

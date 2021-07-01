@@ -7,10 +7,10 @@
       <button  *ngIf="(loggedInUser$ | async)" mat-button [matMenuTriggerFor]="menuHero" ng-init><mat-icon class="material-icons-outlined">manage_accounts</mat-icon></button>
       <mat-menu #menuHero="matMenu" class="uxg-user-profile menu-tab">
           <div class="uxg-menu-header menu-tab-header">
-              <div class="uxg-avatar-hero-block">
-                  <div class="uxg-avatar" large>RH</div>
-                  <h6 class="uxg-h6">Raya Hristova</h6>
-                  <span class="uxg-caption">raya.hristova@finastra.com</span>
+              <div class="uxg-avatar-hero-block"  *ngIf="userProfile$ | async as user">
+                  <div class="uxg-avatar" large>{{user.username}}</div>
+                  <h6 class="uxg-h6"></h6>
+                  <span class="uxg-caption">{{user.firstname}}&nbsp;{{user.lastname}}</span>
               </div>
           </div>
           <mat-divider></mat-divider>

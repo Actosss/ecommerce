@@ -1,0 +1,25 @@
+  <!-- <div *ngIf="cart$ | async as cart">
+    <p>grandTotal: {{cart.grandTotal}}</p>
+    <p>id: {{cart.id }}</p>
+  <div >
+    <ul *ngFor="let item  of cart.cartItem">
+      <li>{{item.quantity}}</li>
+      <li>{{item.totalPrice}}</li>
+      <li>{{item.product.name}}</li>
+      <li>{{item.product.price}}</li>
+      <li>{{item.product.id}}</li>
+    </ul>
+  </div>
+</div> -->
+<div class="main">
+  <div class="container" *ngIf="cart$ | async as cart">
+        <mat-card   *ngFor="let item of cart.cartItem" class="example-card" >
+          <a href=""><span class="material-icons heart">favorite_border</span></a>
+          <mat-card-header>
+            <mat-card-title class="card-title">{{ item.product.name }}</mat-card-title>
+            <mat-card-subtitle class="card-subtitle">{{item.product.price}}</mat-card-subtitle>
+          </mat-card-header>
+         <a href=""><span class="material-icons">shopping_cart</span></a>
+        </mat-card>
+  </div>
+  </div>

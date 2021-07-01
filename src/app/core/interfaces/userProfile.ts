@@ -1,4 +1,3 @@
-import { Cart } from "./cart";
 import { Roles } from "./role";
 
 export interface UserProfile {
@@ -10,5 +9,4 @@ export interface UserProfile {
   lastname: string ;
   roles: Roles;
   token: string ;
-  cart:Cart;
 }

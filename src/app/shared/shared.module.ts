@@ -10,6 +10,7 @@ import { MaterialModule } from '../material/material.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { SearchComponent } from './search/search.component';
 import { ProductsComponent } from './products/products.component';
+import { ToolBarComponent } from './tool-bar/tool-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProductsComponent } from './products/products.component';
     PaginationComponent,
     CarouselComponent,
     SearchComponent,
-    ProductsComponent
+    ProductsComponent,
+    ToolBarComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { ProductsComponent } from './products/products.component';
     PaginationComponent,
     CarouselComponent,
     SearchComponent,
-    ProductsComponent
+    ProductsComponent,
+    ToolBarComponent
   ],
 })
 export class SharedModule {}

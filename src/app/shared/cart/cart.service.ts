@@ -13,7 +13,7 @@ export class CartService {
 
 
   private getCartByUSerId = 'http://localhost:8080/api/user/getCartByUserId/';
-  private getCartItemsByCartId = 'http://localhost:8080/api/user/allCartItemsByCartId/';
+  private getCartItemsByCartId = 'http://localhost:8080/api/user/getCartByUserId/';
 
   constructor(private httpClient :HttpClient) { }
 

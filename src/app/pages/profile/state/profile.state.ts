@@ -8,7 +8,6 @@ import { GetUser } from "./profile.action";
 
 export class ProfileStateModel {
   userProfile: UserProfile|undefined;
-  userCart:Cart|undefined
 
 }
 
@@ -16,8 +15,6 @@ export class ProfileStateModel {
   name: 'profile',
   defaults: {
     userProfile:undefined,
-    userCart:undefined,
-
   }
 })
 
@@ -28,10 +25,6 @@ export class ProfileState {
 @Selector()
 static userProfile(state: ProfileStateModel) {
   return state.userProfile;
-}
-@Selector()
-static userCart(state: ProfileStateModel) {
-  return state.userProfile?.cart;
 }
 constructor(private userService: UserService) {}
 

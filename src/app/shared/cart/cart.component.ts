@@ -7,7 +7,6 @@ import { UserProfile } from 'src/app/core/interfaces/userProfile';
 import { ProfileState } from 'src/app/pages/profile/state/profile.state';
 import { GetCart, } from './state/cart.action';
 
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -15,12 +14,8 @@ import { GetCart, } from './state/cart.action';
 })
 export class CartComponent implements OnInit {
   userId! :number;
-  cartId! :number;
-  cart! :any
-
 
   @Select(ProfileState.userProfile) userProfile$!: Observable<UserProfile>;
-
   @Select(CartState.cart)cart$!: Observable<Cart>;
 
   constructor(private store:Store) {}
@@ -28,14 +23,10 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.userProfile$.subscribe(userProfileData => {
       this.userId = userProfileData.id
-
-      this.store.dispatch(new GetCart(this.userId));
-    });
-
-    this.cart$.subscribe(data => {
-      this.cart = data;
-      // here you will be able to retrieve your cartItems from the cart object
+      this.store.dispatch(new GetCart(this.userId))
     });
   }
-}
+
+ }
+
 

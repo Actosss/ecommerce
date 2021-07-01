@@ -1,7 +1,14 @@
 .container {
-  margin: 0 auto;
-  height: 700px;
-  width: 80%;
-  text-align: center;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+
 }
 
+.main {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.example-card{
+  width:250px;
+}

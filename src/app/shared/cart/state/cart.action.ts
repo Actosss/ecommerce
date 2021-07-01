@@ -6,3 +6,6 @@ export class GetCartItem {
   static readonly type = '[CartItem] GetcartItem';
   constructor(public payload:number) {}
 }
+export class LoadCartItems {
+  static type = "[Cart] Load Cart Items";
+}

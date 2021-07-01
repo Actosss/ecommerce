@@ -1,9 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Action, Selector, State, StateContext } from "@ngxs/store";
+import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { tap } from "rxjs/operators";
 import { Cart } from "src/app/core/interfaces/cart";
-import { CartItem } from "src/app/core/interfaces/cartItem";
-import { Product } from "src/app/core/interfaces/products";
 import { CartService } from "../cart.service";
 import { GetCart } from "./cart.action";
 
@@ -39,6 +37,8 @@ getCart(ctx: StateContext<CartStateModel>, action: GetCart ){
       })
   );
   }
+
+
 }
 
 

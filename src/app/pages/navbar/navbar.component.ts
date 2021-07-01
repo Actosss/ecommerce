@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/core/interfaces/user';
+import { UserProfile } from 'src/app/core/interfaces/userProfile';
 import { Logout } from '../login/state/auth.action';
 import { AuthState } from '../login/state/auth.state';
+import { ProfileState } from '../profile/state/profile.state';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
 
   @Select(AuthState.loggedInUser)loggedInUser$!: Observable<User>;
-
+  @Select(ProfileState.userProfile) userProfile$!: Observable<UserProfile>;
   constructor(private store:Store, private router: Router ){ }
 
   ngOnInit(): void {

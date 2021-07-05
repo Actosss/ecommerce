@@ -19,7 +19,14 @@
             <mat-card-title class="card-title">{{ item.product.name }}</mat-card-title>
             <mat-card-subtitle class="card-subtitle">{{item.product.price}}</mat-card-subtitle>
           </mat-card-header>
-         <a href=""><span class="material-icons">shopping_cart</span></a>
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+
+         <div class="buttons">
+          <a href="" class="delete-btn"><span class="material-icons">delete</span></a>
+          <h3 class="quantity">Quantity {{item.quantity}}</h3>
+
+         </div>
+
         </mat-card>
   </div>
   </div>

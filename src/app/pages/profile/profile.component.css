@@ -1,14 +1,14 @@
-.container {
-  display: flex;
-  flex: 1 1 auto;
-  justify-content: center;
-
-}
-
 .main {
   margin: 0 auto;
   margin-top: 20px;
 }
-.example-card{
-  width:250px;
+img {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  padding: 30px;
+}
+.user_info {
+  padding: 5px;
+  margin-left: 25px;
 }

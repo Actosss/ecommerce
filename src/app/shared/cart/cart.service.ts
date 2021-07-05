@@ -13,14 +13,10 @@ export class CartService {
 
 
   private getCartByUSerId = 'http://localhost:8080/api/user/getCartByUserId/';
-  private getCartItemsByCartId = 'http://localhost:8080/api/user/getCartByUserId/';
 
   constructor(private httpClient :HttpClient) { }
 
   getCartByUserId(id:number): Observable<Cart>{
     return this.httpClient.get<Cart>(this.getCartByUSerId + id);
-  }
-  getCartItemByCartId(id: number):Observable<CartItem> {
-    return this.httpClient.get<CartItem>(this.getCartItemsByCartId + id);
   }
 }

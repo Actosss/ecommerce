@@ -1,23 +1,17 @@
 <div class="main">
   <div class="container">
-  <div *ngIf="userProfile$ | async as userProfile">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title><p>{{ userProfile.firstname }}</p></mat-card-title>
-        <mat-card-subtitle>{{ userProfile.username }}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-          <h2>{{ userProfile.email }}</h2>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button color="primary">Change</button>
-        <button mat-button color="primary">Acount Settings</button>
-      </mat-card-actions>
-    </mat-card>
+  <div *ngIf="userProfile$ | async as userProfile" class="card">
+
+      <img  src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <div class="user_info">
+          <h2>Hello! {{ userProfile.username }}</h2>
+      </div>
+          <div class="toolbar">
+            <button mat-button color="primary">Change</button>
+            <button mat-button color="primary">Acount Settings</button>
+          </div>
+
 </div>
-<app-tool-bar>
-</app-tool-bar>
 </div>
 <app-cart>
 

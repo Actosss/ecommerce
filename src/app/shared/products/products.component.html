@@ -7,7 +7,11 @@
           <mat-card-subtitle class="card-subtitle">{{prod.price}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-       <a href=""><span class="material-icons">shopping_cart</span></a>
+        <div class="cart-btn">
+          <button  class="button"mat-button  color="primary"><span  (click)="addToCart(prod.id)" class="material-icons">shopping_cart</span></button>
+
+        </div>
+
       </mat-card>
 </div>
 <mat-paginator  #paginator

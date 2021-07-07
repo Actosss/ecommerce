@@ -19,10 +19,6 @@
   flex-wrap: wrap;
 
 }
-.mat-paginator{
-  background-color: #f1f1f1;
-  margin: 0px auto;
-}
 .mat-card-title {
   font-size: 16px;
 }
@@ -32,4 +28,8 @@
 }
 .heart{
   float: right;
+}
+.cart-btn {
+  display: flex;
+  justify-content: left;
 }

@@ -23,6 +23,7 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { ProfileState } from './pages/profile/state/profile.state';
 import { CommonModule } from "@angular/common";
 import { CartState } from './shared/cart/state/cart.state';
+import { ProductState } from './shared/products/state/product.state';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -39,7 +40,7 @@ import { CartState } from './shared/cart/state/cart.state';
     FontAwesomeModule,
     SharedModule,
     PagesModule,
-    NgxsModule.forRoot([AuthState,ProfileState,CartState], {
+    NgxsModule.forRoot([AuthState,ProfileState,CartState,ProductState], {
     developmentMode: !environment.production}),
     NgxsLoggerPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({key: [AuthState,ProfileState]})

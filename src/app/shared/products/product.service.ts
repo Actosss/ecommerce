@@ -1,13 +1,14 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Product} from '../../core/interfaces/products';
+import { Product} from '../../core/interfaces/products';
 
+const getListOfProduct = 'http://localhost:8080/api/public/allProducts';
+const addItemToCart = 'http://localhost:8080/api/user/addCartItem';
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService implements OnInit {
-  private jsonFileURL = 'http://localhost:8080/api/public/allProducts';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -15,6 +16,9 @@ export class ProductService implements OnInit {
 
   }
   getProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.jsonFileURL);
+    return this.httpClient.get<Product[]>(getListOfProduct);
+  }
+  addCartItem(cartId:number,cartItemId:number):Observable<any>{
+    return this.httpClient.post(addItemToCart,{cartId,cartItemId});
   }
 }

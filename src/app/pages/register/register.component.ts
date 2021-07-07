@@ -13,8 +13,6 @@ export class RegisterComponent implements OnInit {
   registerForm = this.formBuilder.group({
     email: ['',[Validators.required, ]],
     password: ['', [Validators.required]],
-    firstname: ['', [Validators.required]],
-    lastname: ['', [Validators.required]],
     username: ['', [Validators.required]],
   });
   isLoggedIn = false;
@@ -30,8 +28,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   register() : void {
-    const { email, password, firstname, lastname, username }= this.registerForm.value;
-    this.registerService.register(email, password, firstname, lastname, username).subscribe(
+    const { email, password, username }= this.registerForm.value;
+    this.registerService.register(email, password, username).subscribe(
       data  => {
         console.log(data);
         this.isSuccessful = true;

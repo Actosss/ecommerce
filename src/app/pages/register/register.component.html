@@ -1,27 +1,21 @@
 <div class="container">
-<mat-tab-group>
-  <mat-tab label="Register">
-    <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
-     <div class="example-container">
-       <mat-form-field>
-         <input matInput placeholder="Email" formControlName="email">
-       </mat-form-field>
-       <mat-form-field>
-         <input matInput placeholder="FirstName" formControlName="firstname">
-       </mat-form-field>
-       <mat-form-field>
-         <input matInput placeholder="LastName" formControlName="lastname">
-       </mat-form-field>
-       <mat-form-field>
-         <input matInput type="username" placeholder="Username" formControlName="username">
-       </mat-form-field>
-       <mat-form-field>
-         <input matInput type="password" placeholder="Password" formControlName="password">
-       </mat-form-field>
-       <button type="submit" [disabled]="!registerForm.valid"mat-raised-button color="primary" mat-button>Register</button>
-     </div>
-   </form>
-  </mat-tab>
-</mat-tab-group>
-</div>
-<app-tabs></app-tabs>
+  <mat-tab-group>
+    <mat-tab label="Register">
+      <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+       <div class="example-container">
+         <mat-form-field>
+           <input matInput placeholder="Email" formControlName="email">
+         </mat-form-field>
+         <mat-form-field>
+           <input matInput type="username" placeholder="Username" formControlName="username">
+         </mat-form-field>
+         <mat-form-field>
+           <input matInput type="password" placeholder="Password" formControlName="password">
+         </mat-form-field>
+         <button type="submit" [disabled]="!registerForm.valid"mat-raised-button color="primary" mat-button>Register</button>
+       </div>
+     </form>
+    </mat-tab>
+  </mat-tab-group>
+  </div>
+  <app-tabs></app-tabs>

@@ -4,7 +4,7 @@ import { tap } from "rxjs/operators";
 import { Cart } from "src/app/core/interfaces/cart";
 import { UserProfile } from "src/app/core/interfaces/userProfile";
 import { UserService } from "../user.service";
-import { GetUser } from "./profile.action";
+import { CleanUser, GetUser } from "./profile.action";
 
 export class ProfileStateModel {
   userProfile: UserProfile|undefined;
@@ -39,4 +39,10 @@ getUser(ctx: StateContext<ProfileStateModel>, action: GetUser ){
       })
   );
   }
+  @Action(CleanUser)
+  clearUser(ctx: StateContext<ProfileStateModel>, action: CleanUser ) {
+    const state = ctx.getState();
+    console.log("working")
+    return ctx.setState({...state,userProfile:undefined})
+}
 }

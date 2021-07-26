@@ -9,3 +9,7 @@ export class GetCartItem {
 export class LoadCartItems {
   static type = "[Cart] Load Cart Items";
 }
+export class DeleteCartItem {
+  static type = "[CartItem] DeleteCartItem";
+  constructor(public cartId: number, public productId: number) {}
+}

@@ -3,9 +3,9 @@ import { Cart } from 'src/app/core/interfaces/cart';
 import { CartState} from './state/cart.state';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { GetCart, } from './state/cart.action';
-import { User } from 'src/app/core/interfaces/user';
-import { AuthState } from 'src/app/pages/login/state/auth.state';
+import { DeleteCartItem, GetCart, } from './state/cart.action';
+import { ProfileState } from 'src/app/pages/profile/state/profile.state';
+import { UserProfile } from 'src/app/core/interfaces/userProfile';
 
 @Component({
   selector: 'app-cart',
@@ -13,20 +13,32 @@ import { AuthState } from 'src/app/pages/login/state/auth.state';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  userId!:number;
 
-  @Select(AuthState.loggedInUser) logedInUser$!: Observable<User>;
+  @Select(ProfileState.userProfile) userProfile$!: Observable<UserProfile>;
   @Select(CartState.cart)cart$!: Observable<Cart>;
+
+  private userId!:number;
+  private cartId!:number;
+
   constructor(private store:Store) {}
 
-  ngOnInit(): void {
-      this.logedInUser$.subscribe(logedInUser => {
-      this.userId = logedInUser.id
+  ngOnInit(){
+     this.userProfile$.subscribe(userProfile => {
+      this.userId = userProfile.id
       this.store.dispatch(new GetCart(this.userId))
     });
+    this.cart$.subscribe(cart => {
+      this.cartId=cart.id;
+      console.log(this.cartId)
+    })
+  }
+
+  deleteCartItem(id:number){
+    this.store.dispatch(new DeleteCartItem(this.cartId,id))
   }
   ngOnDestroy() {
-
+    this.userProfile$.subscribe();
+    this.cart$.subscribe();
   }
  }
 

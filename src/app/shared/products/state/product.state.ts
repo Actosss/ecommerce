@@ -45,7 +45,7 @@ addCartItem(ctx: StateContext<ProductStateModel>, action:AddCartItem){
   const state = ctx.getState();
   return this.productService.addCartItem(action.cartId,action.productId).pipe(
       tap((result) => {
-        ctx.setState({...state,products:result,
+        ctx.setState({...state,
 
         });
       })

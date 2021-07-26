@@ -22,7 +22,7 @@
           <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
 
          <div class="buttons">
-          <a href="" class="delete-btn"><span class="material-icons">delete</span></a>
+          <button (click)="deleteCartItem(item.id)" class="button"mat-button  color="primary" href="" class="delete-btn"><span class="material-icons">delete</span></button>
           <h3 class="quantity">Quantity {{item.quantity}}</h3>
 
          </div>
